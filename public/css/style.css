@@ -1,0 +1,41 @@
+p {
+  margin: 10px 0 !important;
+}
+
+.login-container {
+  width: 470px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.fa-beer {
+  padding-right: 5px;
+}
+
+.section {
+  padding-top: 0.5rem !important;
+}
+
+.fa-small {
+  font-size: 18px !important;
+}
+
+.btn-floating.halfway-fab {
+  position: absolute;
+  right: 15px !important;
+  bottom: -20px;
+}
+
+.btn-float {
+  float: left;
+  margin-right: 10px;
+  border-radius: 0.5rem;
+}
+
+input[type='file'] {
+  display: none;
+}
+
+#download {
+  padding-right: 0.5rem;
+}

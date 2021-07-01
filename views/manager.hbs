@@ -1,0 +1,46 @@
+{{> _add_btn }}
+<h6>
+    Manager
+</h6>
+<h3>
+    Sveicināts, {{ name }}.
+</h3>
+
+{{#if recipes}}
+<p>
+    Jūsu izveidotās receptes:
+</p>
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Nosaukums: </th>
+            <th>Datums: </th>
+            <th>Statuss: </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each recipes}}
+        <tr>
+            <td><a href="/recipes/{{_id}}">{{recipesName}}</a></td>
+            <td>{{formatDate createdAt 'MMMM Do YYYY'}}</td>
+            <td><span class="dash-status">{{status}}</span></td>
+            <td>
+                <a href="/recipes/edit/{{_id}}" class="btn btn-float">
+                    <i class="fas fa-edit"></i></a>
+                <form action="/recipes/{{_id}}" method="POST" id="delete-form">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn red darken-1 btn-float">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<p>
+    Pagaidām Jūs neesiet izveidojuši nevienu recepti.
+</p>
+{{/if}}

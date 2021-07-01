@@ -1,0 +1,28 @@
+<h3>Alus receptes</h3>
+<div class="row">
+    {{#each recipes}}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                {{{editIcon user ../user _id}}}
+            </div>
+            <div class="card-content center-align">
+                <h5>{{recipesName}}</h5>
+                <p>{{usedMalts}}</p>
+                <p>{{truncate usedHops}}</p>
+                <p>{{truncate comment}}</p>
+                <br>
+                <div class="chip">
+                    <img src="{{user.image}}" alt="">
+                    <a href="/recipes/user/{{user._id}}">{{user.displayName}}</a>
+                </div>
+            </div>
+            <div class="card-action center-align">
+                <a href="/recipes/{{_id}}" class="btn grey">Apskatīt recepti</a>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p>Nav pagaidām izveidotas receptes.</p>
+    {{/each}}
+</div>

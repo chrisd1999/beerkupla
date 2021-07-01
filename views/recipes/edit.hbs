@@ -1,0 +1,84 @@
+<h4>Rediģēt recepti</h4>
+<div class="row">
+    <form action="/recipes/{{recipe._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="title" name="recipesName" value="{{recipe.recipesName}}">
+                <label for="recipesName">Receptes Nosaukums</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select id="status" name="status">
+                    {{#select recipe.status}}
+                    <option value="public" selected>Publisks</option>
+                    <option value="private">Privāts</option>
+                    {{/select}}
+                </select>
+                <label for="status">Receptes status</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select id="usedMalts" name="usedMalts">
+                    {{#select recipe.usedMalts}}
+                    <option value="public" selected>Pilsner</option>
+                    <option value="private">Pale</option>
+                    {{/select}}
+                </select>
+                <label for="usedMalts">Bazes iesals</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <select id="usedHops" name="usedHops">
+                    {{#select recipe.usedHops}}
+                    <option value="public" selected>Citra</option>
+                    <option value="private">Mosaic</option>
+                    {{/select}}
+                </select>
+                <label for="usedHops">Bazes apinis</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <h8>Sākuma gravitāte: </h8>
+                <textarea id="startGravity" name="startGravity"
+                    placeholder="e.g 1.012">{{recipe.startGravity}}</textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <h8>Beigu gravitāte: </h8>
+                <textarea id="endGravity" name="endGravity" placeholder="e.g 1.012">{{recipe.endGravity}}</textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <h8>IBU: </h8>
+                <textarea id="bitternesIBU" name="bitternesIBU">{{recipe.bitternesIBU}}</textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <h6>Komentārs: </h6>
+                <textarea id="comment" name="comment">{{recipe.comment}}</textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <h8>IBU: </h8>
+                <input name="foo" type="file" />
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Saglabāt" class="btn">
+            <a href="/manager" class="btn orange">Atcelt</a>
+        </div>
+    </form>
+</div>

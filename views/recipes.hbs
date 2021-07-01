@@ -1,0 +1,30 @@
+<h1>Recipes Page</h1>
+{{#if recipes}}
+<p>
+    Izveidotās receptes:
+</p>
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Nosaukums: </th>
+            <th>Datums: </th>
+            <th>Statuss: </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each recipes}}
+        <tr>
+            <td><a href="/recipes/{{_id}}"></a>{{recipesName}}</td>
+            <td>{{createdAt}}</td>
+            <td><span class="dash-status">{{status}}</span></td>
+            <td></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<p>
+    Pagaidām nav izveidotas receptes.
+</p>
+{{/if}}

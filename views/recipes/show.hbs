@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col s12 m8">
+        <h3>{{recipe.recipesName}}
+            <small>{{{editIcon recipe.user user recipe._id false}}}</small>
+        </h3>
+        <div class="card story">
+            <div class="card-content">
+                <span class="card-title">{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</span>
+                {{{recipe.comment}}}
+            </div>
+            {{#if (filesExist recipe._id)}}
+            <div class="card-content">
+                <form action="/recipes/download/{{recipe._id}}" method="POST" id="delete-form">
+                    {{#if (pdfExists recipe._id)}}
+                    <button class="btn blue darken-5" name="pdf" title="Lejupielādēt .pdf failu">
+                        <i class="fas fa-download" id="download"></i>Lejupielādēt .pdf failu
+                    </button>
+                    {{/if}}
+                    {{#if (beersmithExists recipe._id)}}
+                    <button class="btn grey darken-5" name="beersmith" title="Lejupielādēt .pdf failu">
+                        <i class="fas fa-download" id="download"></i>Lejupielādēt Beersmith failu
+                    </button>
+                    {{/if}}
+                </form>
+            </div>
+            {{else}}
+            {{#if (isAuthor recipe.user user)}}
+            <div class="card-content d-inline p-2">
+                <form action="/recipes/upload/{{recipe._id}}" method="POST" id="upload-form"
+                    enctype="multipart/form-data">
+                    <label for="pdfUpload" class="btn blue darken-1" title="Augšupielādēt .pdf failu">
+                        <i class="fas fa-download" id="download"></i>Augšupielādēt .pdf failu
+                    </label>
+                    <input id="pdfUpload" name="pdfUpload" type="file" onchange="form.submit()" />
+                    <label for="beersmithUpload" class="btn grey darken-1" title="Augšupielādēt BeerSmith failu">
+                        <i class="fas fa-download" id="download"></i>Augšupielādēt BeerSmith failu
+                    </label>
+                    <input id="beersmithUpload" name="beersmithUpload" type="file" onchange="form.submit()" />
+                </form>
+            </div>
+            {{/if}}
+            {{/if}}
+        </div>
+    </div>
+    <div class="col s12 m4">
+        <div class="card center-align">
+            <div class="card-content">
+                <span class="card-title">{{recipe.user.displayName}}</span>
+                <img src="{{recipe.user.image}}" class="circle responsive-img img-small">
+            </div>
+            <div class="card-action">
+                <a href="/recipes/user/{{recipe.user._id}}">More From {{recipe.user.firstName}}</a>
+            </div>
+        </div>
+    </div>
+</div>
